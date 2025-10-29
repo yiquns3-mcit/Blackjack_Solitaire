@@ -12,7 +12,7 @@ public class Card {
         if (number.equals("J") || number.equals("Q") || number.equals("K")){
             return 10;
         } else if (number.equals("A")){
-            return 0;                               // set 0 first, later will reset the value when counting the score
+            return 1;                               // later may change to 11 (if 11 gives a better sum)
         } else {
             return Integer.parseInt(number);
         }
