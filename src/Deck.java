@@ -39,6 +39,7 @@ public class Deck {
 
     // display the card spots (not discard)
     public void displaySpot() {
+        System.out.println("<DECK>");
         for (int i = 0; i < 5; i++) {
             String cardValue = displaySpot[i];
             System.out.print(cardValue + " ");
@@ -58,6 +59,17 @@ public class Deck {
             String cardValue = displaySpot[i];
             System.out.print(cardValue + " ");
         }
+    }
+
+    // display the discard area
+    public void discardSpot(){
+        System.out.println();
+        System.out.print("DISCARD: [ ");
+        for (int i = 16; i < 20; i++) {
+            String cardValue = displaySpot[i];
+            System.out.print(cardValue + " ");
+        }
+        System.out.print("]");
     }
 
     // shuffle the card pool
