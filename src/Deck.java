@@ -61,15 +61,19 @@ public class Deck {
         }
     }
 
-    // display the discard area
+    // display the discard area empty spot number
     public void discardSpot(){
         System.out.println();
-        System.out.print("DISCARD: [ ");
+        int emptyDiscard = 0;
         for (int i = 16; i < 20; i++) {
-            String cardValue = displaySpot[i];
-            System.out.print(cardValue + " ");
+            String spotValue = displaySpot[i];
+            String originalValue = Integer.toString(i+1);
+            if (spotValue.equals(originalValue)){
+                emptyDiscard += 1;
+            }
         }
-        System.out.print("]");
+        System.out.printf("DISCARDS spots remaining: %d", emptyDiscard);
+        System.out.println();
     }
 
     // shuffle the card pool
@@ -109,6 +113,18 @@ public class Deck {
             System.out.println("Wrong spot! Please choose an empty spot!");
             return false;
         }
+    }
+
+    // check the spots status of the deck (isFull)
+    public boolean isFull(){
+        for (int i = 0; i < displaySpot.length; i++){
+            String spotValue = displaySpot[i];
+            String originalValue = Integer.toString(i+1);
+            if (spotValue.equals(originalValue)){
+                return false;
+            }
+        }
+        return true;
     }
 
     // get the final score of this game
@@ -194,7 +210,7 @@ public class Deck {
         } else if (sum <= 16){
             score = 1;
         } else {
-            score = 5;
+            score = 0;
         }
         return score;
     }
