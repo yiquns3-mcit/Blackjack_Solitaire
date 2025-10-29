@@ -94,16 +94,21 @@ public class Deck {
 
     // Put the card on either discard or display area (make sure user choose a right spot)
     public boolean putCard(Card c, int index){
-        String card = c.getString();
-        // check if it is able to put on this spot
-        boolean isEmptySpot = displaySpot[index-1].equals(Integer.toString(index));
-        if (isEmptySpot) {                                               // if there is no card on it
-            displaySpot[index-1] = card;                                 // place the card on it
-            valueSpot[index-1] = c.getValue();                           // store the value of the card
-        } else {
+        try {
+            String card = c.getString();
+            // check if it is able to put on this spot
+            boolean isEmptySpot = displaySpot[index - 1].equals(Integer.toString(index));
+            if (isEmptySpot) {                                                  // if there is no card on it
+                displaySpot[index - 1] = card;                                  // place the card on it
+                valueSpot[index - 1] = c.getValue();                            // store the value of the card
+            } else {
+                System.out.println("Wrong spot! Please choose an empty spot!");
+            }
+            return isEmptySpot;                                                // (for main method) if false, ask user to choose again
+        } catch (ArrayIndexOutOfBoundsException e){
             System.out.println("Wrong spot! Please choose an empty spot!");
+            return false;
         }
-        return isEmptySpot;                                              // (for main method) if false, ask user to choose again
     }
 
     // get the final score of this game
