@@ -2,7 +2,7 @@ import java.util.*;
 
 public class BlackjackSolitaire {
 
-    public static void main(String[] arg){
+    public void play(){
 
         // prepare for the game (initialize deck)
         Deck deck = new Deck();
